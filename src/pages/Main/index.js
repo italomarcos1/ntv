@@ -30,6 +30,8 @@ export default class Main extends Component {
   };
 
   handleSend = async () => {
+    Keyboard.dismiss();
+
     const { newUser, users } = this.state;
 
     this.setState({ loading: true });
@@ -48,8 +50,6 @@ export default class Main extends Component {
       newUser: '',
       users: [...users, data],
     });
-
-    Keyboard.dismiss();
   };
 
   render() {
