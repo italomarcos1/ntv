@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { StatusBar, Text } from 'react-native';
 import Routes from './routes';
 
 export default function App() {
   return (
-    <Routes>
-      <Text>Hello impossible</Text>
-    </Routes>
+    <>
+      <StatusBar barStyle="dark-content" backgroundColor="#ad0000" />
+      <Routes />
+    </>
   );
 }
