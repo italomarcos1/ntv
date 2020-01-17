@@ -17,12 +17,16 @@ export const Input = styled.TextInput.attrs({
 })`
   flex: 1;
   height: 35px;
+  border-radius: 3px;
+  border: 1.5px solid #222;
   background-color: #999;
+  padding: 0 15px;
   font-family: monospace;
 `;
 
 export const SubmitButton = styled(RectButton)`
   background-color: #222;
+  border-radius: 3px;
   justify-content: center;
   align-items: center;
   margin-left: 5px;
@@ -68,7 +72,7 @@ export const Bio = styled.Text.attrs({
 export const ProfileButton = styled(RectButton)`
   margin-top: 10px;
   align-self: stretch; /* alinha pra ocupar a largura total do componente. */
-  border-radius: 4px;
+  border-radius: 3px;
   background: #e6b32a;
   justify-content: center;
   align-items: center;
