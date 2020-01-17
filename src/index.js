@@ -1,11 +1,14 @@
 import './config/ReactotronConfig';
 import React from 'react';
-import { View, Text } from 'react-native';
+import 'react-native-gesture-handler';
+import { StatusBar } from 'react-native';
+import Routes from './routes';
 
 export default function App() {
   return (
-    <View>
-      <Text>Hello impossible</Text>
-    </View>
+    <>
+      <StatusBar barStyle="dark-content" backgroundColor="#333" />
+      <Routes />
+    </>
   );
 }
