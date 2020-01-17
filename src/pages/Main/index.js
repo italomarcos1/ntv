@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { ActivityIndicator, Keyboard } from 'react-native';
 import api from '../../services/api';
@@ -28,6 +29,22 @@ export default class Main extends Component {
     newUser: '',
     users: [],
   };
+
+  componentDidUpdate(_, prevState) {
+    const { users } = this.state;
+
+    if (prevState.users !== users) {
+      AsyncStorage.setItem('usr', JSON.stringify(users));
+    }
+  }
+
+  async componentDidMount() {
+    const usr = await AsyncStorage.getItem('usr');
+
+    if (usr) {
+      this.setState({ users: JSON.parse(usr) });
+    }
+  }
 
   handleSend = async () => {
     Keyboard.dismiss();
