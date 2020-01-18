@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import { ActivityIndicator, Keyboard } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import PropTypes from 'prop-types';
 import api from '../../services/api';
 
 import {
@@ -62,6 +63,12 @@ export default class Main extends Component {
     this.setState({ loading: false, newUser: '', users: [...users, data] });
   };
 
+  handleChangeScreen = userData => {
+    const { navigation } = this.props;
+
+    navigation.navigate('User', { userData });
+  };
+
   render() {
     const { loading, newUser, users } = this.state;
 
@@ -93,7 +100,7 @@ export default class Main extends Component {
               <Name>{item.name}</Name>
               <Bio>{item.bio}</Bio>
 
-              <ProfileButton onPress={() => {}}>
+              <ProfileButton onPress={() => this.handleChangeScreen(item)}>
                 <ProfileButtonText>See profile</ProfileButtonText>
               </ProfileButton>
             </User>
@@ -106,4 +113,10 @@ export default class Main extends Component {
 
 Main.navigationOptions = {
   title: 'Main Page',
+};
+
+Main.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
 };
